@@ -1,0 +1,23 @@
+#number_of_robots
+10
+#rooms
+##start
+start 100 500
+##end
+end 1000 500
+2 495 275
+3 515 706
+4 530 483
+#tunnels
+start-2
+start-4
+start-3
+2-end
+4-end
+3-end
+#moves
+P1-2 P2-4 P3-3
+P1-end P4-2 P2-end P5-4 P3-end P6-3
+P4-end P7-2 P5-end P8-4 P6-end P9-3
+P7-end P10-2 P8-end P9-end
+P10-end

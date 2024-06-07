@@ -1,0 +1,19 @@
+20
+##start
+start 197 518
+##end
+end 692 508
+huh 272 359
+test 414 727
+maisnan 558 653
+ok 500 500
+celuici 331 602
+start-huh
+start-celuici
+celuici-test
+test-maisnan
+maisnan-end
+celuici-ok
+ok-maisnan
+huh-ok
+ok-end

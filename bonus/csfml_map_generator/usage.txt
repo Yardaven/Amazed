@@ -1,0 +1,35 @@
+Welcome to the A-Maze-d map generator.
+
+Launch program: ./map_generator [-h]
+
+Creates a "generated_map.txt" file that contains the A-Maze-d map.
+
+## How to Use ##
+
+Use the cursor to adjust the number of robots. (From 0 to 100)
+
+There are 2 editing modes.
+
+    - The first mode is the "cursor" mode.
+        It allows you to drag a room to change its cordinates.
+
+    - The second mode is the "link" mode.
+        It allows you to create links between rooms.
+        To create a link, you have to left-click on the first room,
+        and then released at the room you want to make a connection.
+
+~~ROOM CREATION~~
+
+    Left-click on the "CREATE ROOM".
+    A pop-up window will appear.
+    Make sure to left-click on the white rectangle to start giving your room a name.
+    
+!! Warning !!
+
+    Your room name can't have more than 13 characters.
+    You can't create a room with a name that is already taken.
+    Make sure to press Enter before clicking the "CONFRIM" button to send correctly your room name.
+    A Room must have a name.
+
+    Authorised characters : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"
+

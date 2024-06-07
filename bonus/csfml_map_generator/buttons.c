@@ -1,0 +1,62 @@
+/*
+** EPITECH PROJECT, 2024
+** buttons
+** File description:
+** buttons
+*/
+
+#include "include.h"
+
+button_t *create_button(sfVector2i pos, sfVector2i size, void(*func)(gen_t *, amazed_t *), char *name)
+{
+    button_t *button = malloc(sizeof(button_t));
+    button->pos = pos;
+    button->size = size;
+    button->func = func;
+    button->is_active = 1;
+    button->is_held = 0;
+    button->rect = create_rectangle((sfVector2f){pos.x, pos.y}, (sfVector2f){size.x, size.y}, sfColor_fromRGB(100, 100, 100));
+    button->button_name = strdup(name);
+    return button;
+}
+
+void button_behavior(gen_t *gen, int index, amazed_t *amazed)
+{
+    sfRectangleShape_setFillColor(gen->buttons[index]->rect, sfColor_fromRGB(160, 160, 160));
+    if (gen->buttons[index]->is_active == 0) {
+        sfRectangleShape_setFillColor(gen->buttons[index]->rect, sfColor_fromRGB(50, 50, 50));
+        return;
+    }
+    if (mouse_in_rect(gen->window, gen->buttons[index]->size, gen->buttons[index]->pos))
+        if (gen->pressed) {
+            gen->buttons[index]->func(gen, amazed);
+        }
+    if (mouse_in_rect(gen->window, gen->buttons[index]->size, gen->buttons[index]->pos))
+        sfRectangleShape_setFillColor(gen->buttons[index]->rect, sfColor_fromRGB(200, 200, 200));
+
+}
+
+void manage_buttons(gen_t *gen, amazed_t *amazed)
+{
+    if (gen->mode == 1) {
+        gen->buttons[0]->is_active = 0;
+        gen->buttons[1]->is_active = 1;
+        gen->buttons[4]->is_active = 1;
+    }
+    if (gen->mode == 2) {
+        gen->buttons[0]->is_active = 1;
+        gen->buttons[1]->is_active = 0;
+        gen->buttons[4]->is_active = 1;
+    }
+    if (gen->mode == 3) {
+        gen->buttons[0]->is_active = 1;
+        gen->buttons[1]->is_active = 1;
+        gen->buttons[4]->is_active = 0;
+    }
+    for (int i = 0; gen->buttons[i]; i++) {
+        gen->buttons[2]->is_active = 1;
+        button_behavior(gen, i, amazed);
+        sfRenderWindow_drawRectangleShape(gen->window, gen->buttons[i]->rect, NULL);
+        show_text(gen->window, gen->buttons[i]->button_name, (sfVector2f){gen->buttons[i]->pos.x + 50, gen->buttons[i]->pos.y + 25}, 40, "rs/regular.ttf");
+    }
+}
